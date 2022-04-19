@@ -1,7 +1,7 @@
 # ⚔️ Ignite - RentX
 <br>
 <p align="center">
-  <img src=assets/logotipo.png>
+  <img src=assets/logo.svg>
 </p>
 
 ## :pushpin: About
