@@ -13,7 +13,6 @@ import {
 } from '@expo-google-fonts/archivo';
 import AppLoading from 'expo-app-loading';
 
-import { StatusBar } from 'expo-status-bar';
 import { Home } from './src/screens/Home';
 
 export default function App() {
@@ -31,7 +30,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Home />;
+      <Home />
     </ThemeProvider>
   );
 }
