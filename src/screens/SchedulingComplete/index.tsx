@@ -3,6 +3,7 @@ import { StatusBar, useWindowDimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../routes/stack.routes';
+import { useTheme } from 'styled-components';
 
 import { ConfirmButton } from '../../components/ConfirmButton';
 
@@ -17,6 +18,7 @@ type SchedulingCompleteScreenProps = StackNavigationProp<
 >;
 
 export function SchedulingComplete() {
+  const theme = useTheme();
   const { width } = useWindowDimensions();
   const navigation = useNavigation<SchedulingCompleteScreenProps>();
 
@@ -28,7 +30,7 @@ export function SchedulingComplete() {
     <Container>
       <StatusBar
         barStyle="light-content"
-        backgroundColor="transparent"
+        backgroundColor={theme.colors.header}
         translucent
       />
 

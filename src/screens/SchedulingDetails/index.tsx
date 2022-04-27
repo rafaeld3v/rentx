@@ -60,7 +60,11 @@ export function SchedulingDetails() {
 
   return (
     <Container>
-      <StatusBar barStyle="dark-content" backgroundColor="light" translucent />
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor={theme.colors.background_secondary}
+        translucent
+      />
       <Header>
         <BackButton onPress={() => {}} />
       </Header>

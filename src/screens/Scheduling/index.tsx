@@ -41,8 +41,8 @@ export function Scheduling() {
       <Header>
         <StatusBar
           barStyle="light-content"
+          backgroundColor={theme.colors.header}
           translucent
-          backgroundColor="transparent"
         />
         <BackButton color={theme.colors.shape} onPress={() => {}} />
 

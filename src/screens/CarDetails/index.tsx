@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../routes/stack.routes';
+import { useTheme } from 'styled-components';
 
 import { BackButton } from '../../components/BackButton';
 import { ImageSlider } from '../../components/ImageSlider';
@@ -39,6 +40,7 @@ type CarDetailsScreenProps = StackNavigationProp<
 >;
 
 export function CarDetails() {
+  const theme = useTheme();
   const navigation = useNavigation<CarDetailsScreenProps>();
 
   function handleConfirmRental() {
@@ -47,7 +49,11 @@ export function CarDetails() {
 
   return (
     <Container>
-      <StatusBar barStyle="dark-content" backgroundColor="light" translucent />
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor={theme.colors.background_secondary}
+        translucent
+      />
       <Header>
         <BackButton onPress={() => {}} />
       </Header>
