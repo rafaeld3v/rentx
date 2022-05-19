@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StatusBar } from 'react-native';
 import { useTheme } from 'styled-components';
 import { useNavigation } from '@react-navigation/native';
@@ -7,7 +7,12 @@ import { RootStackParamList } from '../../routes/stack.routes';
 
 import { BackButton } from '../../components/BackButton';
 import { Button } from '../../components/Button';
-import { Calendar } from '../../components/Calendar';
+import {
+  Calendar,
+  DayProps,
+  generateInterval,
+  MarkedDatesProps,
+} from '../../components/Calendar';
 
 import ArrowSvg from '../../assets/arrow.svg';
 
@@ -29,11 +34,35 @@ type SchedulingScreenProps = StackNavigationProp<
 >;
 
 export function Scheduling() {
+  const [lastSelectedDate, setLastSelectedDate] = useState<DayProps>(
+    {} as DayProps
+  );
+  const [markedDates, setMarkedDates] = useState<MarkedDatesProps>(
+    {} as MarkedDatesProps
+  );
   const theme = useTheme();
   const navigation = useNavigation<SchedulingScreenProps>();
 
   function handleConfirmRental() {
     navigation.navigate('SchedulingDetails');
+  }
+
+  function handleBack() {
+    navigation.goBack();
+  }
+
+  function handleChangeDate(date: DayProps) {
+    let start = !lastSelectedDate.timestamp ? date : lastSelectedDate;
+    let end = date;
+
+    if (start.timestamp > end.timestamp) {
+      start = end;
+      end = start;
+    }
+
+    setLastSelectedDate(end);
+    const interval = generateInterval(start, end);
+    setMarkedDates(interval);
   }
 
   return (
@@ -44,7 +73,7 @@ export function Scheduling() {
           backgroundColor={theme.colors.header}
           translucent
         />
-        <BackButton color={theme.colors.shape} onPress={() => {}} />
+        <BackButton color={theme.colors.shape} onPress={handleBack} />
 
         <Title>
           Escolha uma {'\n'}
@@ -68,7 +97,7 @@ export function Scheduling() {
       </Header>
 
       <Content>
-        <Calendar />
+        <Calendar markedDates={markedDates} onDayPress={handleChangeDate} />
       </Content>
 
       <Footer>
