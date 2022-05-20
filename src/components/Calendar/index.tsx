@@ -2,6 +2,7 @@ import React from 'react';
 import { Feather } from '@expo/vector-icons';
 import { useTheme } from 'styled-components';
 import { ptBR } from './localeConfig';
+import { format } from 'date-fns';
 
 import { generateInterval } from './generateInterval';
 
@@ -62,7 +63,7 @@ function Calendar({ markedDates, onDayPress }: CalendarProps) {
         },
       }}
       firstDay={1}
-      minDate={String(new Date())}
+      minDate={format(new Date(), 'dd/MM/yyyy')}
       markingType="period"
       markedDates={markedDates}
       onDayPress={onDayPress}
