@@ -5,7 +5,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../routes/stack.routes';
 import { getPlatformDate } from '../../utils/getPlatformDate';
-import { format } from 'date-fns/fp';
+import { format } from 'date-fns';
 
 import { CarDTO } from '../../dtos/CarDTO';
 
