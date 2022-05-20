@@ -16,4 +16,5 @@ export interface CarDTO {
     }
   ];
   photos: string[];
+  onPress: () => void;
 }
