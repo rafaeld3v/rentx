@@ -61,17 +61,6 @@ export function Scheduling() {
   const route = useRoute();
   const { car } = route.params as Params;
 
-  function handleConfirmRental() {
-    if (!rentalPeriod.startFormatted || !rentalPeriod.endFormatted) {
-      Alert.alert('Selecione o intervalo para alugar!');
-    } else {
-      navigation.navigate('SchedulingDetails', {
-        car,
-        dates: Object.keys(markedDates),
-      });
-    }
-  }
-
   function handleBack() {
     navigation.goBack();
   }
@@ -99,6 +88,17 @@ export function Scheduling() {
       ),
       endFormatted: format(getPlatformDate(new Date(endDate)), 'dd/MM/yyyy'),
     });
+  }
+
+  function handleConfirmRental() {
+    if (!rentalPeriod.startFormatted || !rentalPeriod.endFormatted) {
+      Alert.alert('Selecione o intervalo para alugar!');
+    } else {
+      navigation.navigate('SchedulingDetails', {
+        car,
+        dates: Object.keys(markedDates),
+      });
+    }
   }
 
   return (
@@ -141,7 +141,11 @@ export function Scheduling() {
       </Content>
 
       <Footer>
-        <Button title="Confirmar" onPress={handleConfirmRental} />
+        <Button
+          title="Confirmar"
+          enabled={!!rentalPeriod.startFormatted}
+          onPress={handleConfirmRental}
+        />
       </Footer>
     </Container>
   );

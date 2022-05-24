@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../routes/stack.routes';
 import { useTheme } from 'styled-components';
+import { Ionicons } from '@expo/vector-icons';
 
 import { Car } from '../../components/Car/index';
 import { Load } from '../../components/Load/index';
@@ -14,7 +15,14 @@ import Logo from '../../assets/logo.svg';
 import { api } from '../../services/api';
 import { CarDTO } from '../../dtos/CarDTO';
 
-import { Container, Header, HeaderContent, TotalCars, CarList } from './styles';
+import {
+  Container,
+  Header,
+  HeaderContent,
+  TotalCars,
+  CarList,
+  MyCarsButton,
+} from './styles';
 
 type CarDetailsScreenProps = StackNavigationProp<
   RootStackParamList,
@@ -29,6 +37,10 @@ export function Home() {
 
   function handleCarDetails(car: CarDTO) {
     navigation.navigate('CarDetails', { car });
+  }
+
+  function handleOpenMyCars() {
+    navigation.navigate('MyCars');
   }
 
   useEffect(() => {
@@ -72,6 +84,10 @@ export function Home() {
           )}
         />
       )}
+
+      <MyCarsButton onPress={handleOpenMyCars}>
+        <Ionicons name="ios-car-sport" size={32} color={theme.colors.main} />
+      </MyCarsButton>
     </Container>
   );
 }
