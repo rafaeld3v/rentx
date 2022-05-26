@@ -4,19 +4,18 @@ import { useTheme } from 'styled-components';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../routes/stack.routes';
-import { getPlatformDate } from '../../utils/getPlatformDate';
-import { format } from 'date-fns';
+import { format, parseISO } from 'date-fns';
 
 import { CarDTO } from '../../dtos/CarDTO';
 
+import { BackButton } from '../../components/BackButton';
+import { Button } from '../../components/Button';
 import {
   Calendar,
   DayProps,
   generateInterval,
   MarkedDatesProps,
 } from '../../components/Calendar';
-import { BackButton } from '../../components/BackButton';
-import { Button } from '../../components/Button';
 
 import ArrowSvg from '../../assets/arrow.svg';
 
@@ -82,11 +81,8 @@ export function Scheduling() {
     const endDate = Object.keys(interval)[Object.keys(interval).length - 1];
 
     setRentalPeriod({
-      startFormatted: format(
-        getPlatformDate(new Date(firstDate)),
-        'dd/MM/yyyy'
-      ),
-      endFormatted: format(getPlatformDate(new Date(endDate)), 'dd/MM/yyyy'),
+      startFormatted: format(parseISO(firstDate), 'dd/MM/yyyy'),
+      endFormatted: format(parseISO(endDate), 'dd/MM/yyyy'),
     });
   }
 

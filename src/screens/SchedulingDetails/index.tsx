@@ -6,10 +6,9 @@ import { useTheme } from 'styled-components';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../routes/stack.routes';
-import { format } from 'date-fns';
+import { format, parseISO } from 'date-fns';
 
 import { CarDTO } from '../../dtos/CarDTO';
-import { getPlatformDate } from '../../utils/getPlatformDate';
 import { getAccessoryIcon } from '../../utils/getAccessoryIcon';
 import { api } from '../../services/api';
 
@@ -85,6 +84,8 @@ export function SchedulingDetails() {
     await api.post(`/schedules_byuser`, {
       user_id: 1,
       car,
+      startDate: format(parseISO(dates[0]), 'dd/MM/yyyy'),
+      endDate: format(parseISO(dates[dates.length - 1]), 'dd/MM/yyyy'),
     });
 
     api
@@ -105,11 +106,8 @@ export function SchedulingDetails() {
 
   useEffect(() => {
     setRentalPeriod({
-      start: format(getPlatformDate(new Date(dates[0])), 'dd/MM/yyyy'),
-      end: format(
-        getPlatformDate(new Date(dates[dates.length - 1])),
-        'dd/MM/yyyy'
-      ),
+      start: format(parseISO(dates[0]), 'dd/MM/yyyy'),
+      end: format(parseISO(dates[dates.length - 1]), 'dd/MM/yyyy'),
     });
   }, []);
 

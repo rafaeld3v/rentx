@@ -35,6 +35,10 @@ export function Home() {
   const navigation = useNavigation<CarDetailsScreenProps>();
   const theme = useTheme();
 
+  const myCarsButtonProps = {
+    onPress: handleOpenMyCars,
+  };
+
   function handleCarDetails(car: CarDTO) {
     navigation.navigate('CarDetails', { car });
   }
@@ -69,7 +73,7 @@ export function Home() {
         <HeaderContent>
           <Logo width={RFValue(108)} height={RFValue(12)} />
 
-          <TotalCars>Total de 12 carros</TotalCars>
+          <TotalCars>Total de {cars.length} carros</TotalCars>
         </HeaderContent>
       </Header>
 
@@ -85,7 +89,7 @@ export function Home() {
         />
       )}
 
-      <MyCarsButton onPress={handleOpenMyCars}>
+      <MyCarsButton {...myCarsButtonProps}>
         <Ionicons name="ios-car-sport" size={32} color={theme.colors.shape} />
       </MyCarsButton>
     </Container>
