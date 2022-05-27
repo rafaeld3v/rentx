@@ -1,6 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
+import { Splash } from '../screens/Splash';
 import { Home } from '../screens/Home';
 import { MyCars } from '../screens/MyCars';
 import { CarDetails } from '../screens/CarDetails';
@@ -13,6 +14,7 @@ import { CarDTO } from '../dtos/CarDTO';
 const { Navigator, Screen } = createStackNavigator();
 
 export type RootStackParamList = {
+  Splash: undefined;
   Home: undefined;
   MyCars: undefined;
   CarDetails: { car: CarDTO };
@@ -28,7 +30,9 @@ export type RootStackParamList = {
 
 export function StackRoutes() {
   return (
-    <Navigator screenOptions={{ headerShown: false }}>
+    <Navigator screenOptions={{ headerShown: false }} initialRouteName="Splash">
+      <Screen name="Splash" component={Splash} />
+
       <Screen name="Home" component={Home} />
 
       <Screen name="MyCars" component={MyCars} />
