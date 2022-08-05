@@ -24,7 +24,7 @@ Aplicativo para alugar carros.
 
 ## 🔖 Layout
 
-Você pode visualizar o layout do projeto através [desse link](https://www.figma.com/file/VkNLPvi04gxReXEVTi5PPJ/GoFinances-Ignite?node-id=0%3A1). É necessário ter conta no [Figma](http://figma.com/) para acessá-lo.
+Você pode visualizar o layout do projeto através [desse link](https://www.figma.com/file/NVD5I2OfDD0BQwMru8VtwY/RentX-Ignite). É necessário ter conta no [Figma](http://figma.com/) para acessá-lo.
 
 ## 🚀 Como executar
 
