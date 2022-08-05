@@ -20,7 +20,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ## 💻 Projeto
 
-Aplicativo para lhe ajudar a controlar suas finanças.
+Aplicativo para alugar carros.
 
 ## 🔖 Layout
 
